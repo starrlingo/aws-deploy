@@ -65,7 +65,7 @@ You should launch an EC2 instance (associated with IAM role) to access another A
   
 ## Usage
 ### Managing IAM role
-
+Create IAM role
 ~~~
 aws_deploy::iam::role { 'description of role':
   ensure                      => 'present',
@@ -74,7 +74,7 @@ aws_deploy::iam::role { 'description of role':
   policy_document_path        => '/path/your-role-policy.json',
 }
 ~~~
-
+Delete IAM role
 ~~~
 aws_deploy::iam::role { 'description of role':
   ensure                      => 'absent',
@@ -83,7 +83,7 @@ aws_deploy::iam::role { 'description of role':
 ~~~
 
 ### Managing Lambda
-
+Create Lambda
 ~~~
 aws_deploy::lambda::function { "description of function":
   ensure => 'present',
@@ -95,7 +95,7 @@ aws_deploy::lambda::function { "description of function":
   zip_file_path => "/path/test.zip",
 }
 ~~~
-
+Delete Lambda
 ~~~
 aws_deploy::lambda::function { "description of function":
   ensure => 'absent',
@@ -105,7 +105,7 @@ aws_deploy::lambda::function { "description of function":
 ~~~
 
 ### Managing DynamoDB
-
+Create table
 ~~~
 aws_deploy::dynamodb::table { "description of dynamodb table":
   ensure => 'present',
@@ -119,7 +119,7 @@ aws_deploy::dynamodb::table { "description of dynamodb table":
   write_capacity_units => 1,
 }
 ~~~
-
+Delete table
 ~~~
 aws_deploy::dynamodb::table { "description of dynamodb table":
   ensure => 'absent',
@@ -129,7 +129,7 @@ aws_deploy::dynamodb::table { "description of dynamodb table":
 ~~~
 
 ### Managing S3 Bucket
-
+Create S3 bucket
 ~~~
 aws_deploy::s3::bucket { "description of bucket":
   ensure      => 'present',
@@ -137,7 +137,7 @@ aws_deploy::s3::bucket { "description of bucket":
   bucket_name => 'your bucket name',
 }
 ~~~
-
+Delete S3 bucket
 ~~~
 aws_deploy::s3::bucket { "description of bucket":
   ensure      => 'absent',
@@ -147,6 +147,7 @@ aws_deploy::s3::bucket { "description of bucket":
 ~~~
 
 ### Managing S3 Files
+Upload S3 files
 ~~~
 aws_deploy::s3::files { "description of s3 files":
   ensure      => 'file/directory',
@@ -155,7 +156,7 @@ aws_deploy::s3::files { "description of s3 files":
   destination => "your file path in S3 or local",
 }
 ~~~
-
+Delete S3 files
 ~~~
 aws_deploy::s3::files { "description of s3 files":
   ensure      => 'absent',
@@ -165,7 +166,7 @@ aws_deploy::s3::files { "description of s3 files":
 ~~~
 
 ### Managing Cloudwatch alarm
-
+Create alarm
 ~~~
 aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
   ensure               => 'present',
@@ -184,7 +185,7 @@ aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
   alarm_sns_topic_name => "sns topic name",
 }
 ~~~
-
+Delete alarm
 ~~~
 aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
   ensure               => 'absent',
