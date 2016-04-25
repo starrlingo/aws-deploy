@@ -10,7 +10,8 @@
   * [Managing IAM role](#managing-iam-role)
   * [Managing Lambda](#managing-lambda)
   * [Managing DynamoDB](#managing-dynamodb)
-  * [Managing S3](#managing-s3)
+  * [Managing S3 Bucket](#managing-s3-bucket)
+  * [Managing S3 Files](#managing-s3-files)
   * [Managing Cloudwatch alarm](#managing-cloudwatch-alarm)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -74,6 +75,13 @@ aws_deploy::iam::role { 'description of role':
 }
 ~~~
 
+~~~
+aws_deploy::iam::role { 'description of role':
+  ensure                      => 'absent',
+  role_name                   => 'name-of-role',
+}
+~~~
+
 ### Managing Lambda
 
 ~~~
@@ -85,6 +93,14 @@ aws_deploy::lambda::function { "description of function":
   function_name => "name-of-function",
   exec_role_arn => "arn:aws:iam::${myaccountId}:role/my_lambda_exec_role",
   zip_file_path => "/path/test.zip",
+}
+~~~
+
+~~~
+aws_deploy::lambda::function { "description of function":
+  ensure => 'absent',
+  region => 'us-west-2',
+  function_name => "name-of-function",
 }
 ~~~
 
@@ -104,7 +120,15 @@ aws_deploy::dynamodb::table { "description of dynamodb table":
 }
 ~~~
 
-### Managing S3
+~~~
+aws_deploy::dynamodb::table { "description of dynamodb table":
+  ensure => 'absent',
+  region => 'us-west-2',
+  table_name => 'test',
+}
+~~~
+
+### Managing S3 Bucket
 
 ~~~
 aws_deploy::s3::bucket { "description of bucket":
@@ -115,6 +139,15 @@ aws_deploy::s3::bucket { "description of bucket":
 ~~~
 
 ~~~
+aws_deploy::s3::bucket { "description of bucket":
+  ensure      => 'absent',
+  region      => 'ap-southeast-1',
+  bucket_name => 'your bucket name',
+}
+~~~
+
+### Managing S3 Files
+~~~
 aws_deploy::s3::files { "description of s3 files":
   ensure      => 'file/directory',
   region      => 'your bucket region',
@@ -123,11 +156,19 @@ aws_deploy::s3::files { "description of s3 files":
 }
 ~~~
 
+~~~
+aws_deploy::s3::files { "description of s3 files":
+  ensure      => 'absent',
+  region      => 'your bucket region',
+  source      => "your file path in S3 or local",
+}
+~~~
+
 ### Managing Cloudwatch alarm
 
 ~~~
 aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
-  ensure               => 'present/absent',
+  ensure               => 'present',
   region               => 'your deployed region',
   accountId            => 'your account id',
   alarm_name           => "your alarm name",
@@ -141,6 +182,15 @@ aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
   comparison_operator  => "GreaterThanOrEqualToThreshold/GreaterThanThreshold/LessThanThreshold/LessThanOrEqualToThreshold",
   threshold            => 10,
   alarm_sns_topic_name => "sns topic name",
+}
+~~~
+
+~~~
+aws_deploy::cloudwatch::alarm { "description of cloudwatch alarm":
+  ensure               => 'absent',
+  region               => 'your deployed region',
+  accountId            => 'your account id',
+  alarm_name           => "your alarm name",
 }
 ~~~
 
