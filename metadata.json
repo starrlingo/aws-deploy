@@ -1,0 +1,14 @@
+{
+  "name": "jasonxlin/aws_deploy",
+  "version": "0.1.0",
+  "author": "jason.x.lin",
+  "summary": "Manage & Deploy AWS services",
+  "license": "MIT",
+  "source": "git",
+  "project_page": https://github.com/sp52005/aws-deploy,
+  "issues_url": https://github.com/sp52005/aws-deploy,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
