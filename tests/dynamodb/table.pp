@@ -9,20 +9,20 @@
 # Learn more about module testing here:
 # https://docs.puppetlabs.com/guides/tests_smoke.html
 #
-aws_deploy::dynamodb::table { "create test table":
-  ensure => 'present',
-  region => 'us-west-2',
-  table_name => 'test',
-  hash_attribute_name => 'time',
-  hash_attribute_type => 'S',
+aws_deploy::dynamodb::table { 'create test table':
+  ensure               => 'present',
+  region               => 'us-west-2',
+  table_name           => 'test',
+  hash_attribute_name  => 'time',
+  hash_attribute_type  => 'S',
   range_attribute_name => 'message',
   range_attribute_type => 'S',
   read_capacity_units  => 1,
   write_capacity_units => 1,
 }
 ->
-aws_deploy::dynamodb::table { "delete test table":
-  ensure => 'absent',
-  region => 'us-west-2',
+aws_deploy::dynamodb::table { 'delete test table':
+  ensure     => 'absent',
+  region     => 'us-west-2',
   table_name => 'test',
 }

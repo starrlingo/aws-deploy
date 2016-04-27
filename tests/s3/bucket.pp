@@ -9,13 +9,13 @@
 # Learn more about module testing here:
 # https://docs.puppetlabs.com/guides/tests_smoke.html
 #
-aws_deploy::s3::bucket { "create bucket":
+aws_deploy::s3::bucket { 'create bucket':
   ensure      => 'present',
   region      => 'ap-southeast-1',
   bucket_name => 'test-1308073.2016.04.22',
 }
 ->
-aws_deploy::s3::bucket { "delete bucket":
+aws_deploy::s3::bucket { 'delete bucket':
   ensure      => 'absent',
   region      => 'ap-southeast-1',
   bucket_name => 'test-1308073.2016.04.22',

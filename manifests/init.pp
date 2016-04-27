@@ -1,7 +1,7 @@
-# Class: aws_s3
+# Class: aws_deploy
 # ===========================
 #
-# Manage stuffs in AWS S3
+# Manage stuffs in AWS service
 #
 #
 # Authors

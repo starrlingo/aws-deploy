@@ -10,27 +10,27 @@
 # https://docs.puppetlabs.com/guides/tests_smoke.html
 #
 # alarm creation/delete testing
-aws_deploy::cloudwatch::alarm { "Create DynamoDB test ConsumedWriteCapacity alarm":
+aws_deploy::cloudwatch::alarm { 'Create DynamoDB test alarm':
   ensure               => 'present',
   region               => 'us-west-2',
   accountId            => '326220766626',
-  alarm_name           => "Critical - High ConsumedWriteCapacity alarm for test",
-  metric_name          => "ConsumedWriteCapacityUnits",
-  namespace            => "AWS/DynamoDB",
-  dimension_name       => "TableName",
-  dimension_value      => "test",
-  statistic            => "Sum",
+  alarm_name           => 'High ConsumedWriteCapacity alarm',
+  metric_name          => 'ConsumedWriteCapacityUnits',
+  namespace            => 'AWS/DynamoDB',
+  dimension_name       => 'TableName',
+  dimension_value      => 'test',
+  statistic            => 'Sum',
   period               => 300,
   evaluation_periods   => 6,
-  comparison_operator  => "GreaterThanOrEqualToThreshold",
+  comparison_operator  => 'GreaterThanOrEqualToThreshold',
   threshold            => 10,
-  alarm_sns_topic_name => "test-cloudwatch-alarm",
+  alarm_sns_topic_name => 'test-cloudwatch-alarm',
 }
 ->
-aws_deploy::cloudwatch::alarm { "Delete DynamoDB test ConsumedWriteCapacity alarm":
+aws_deploy::cloudwatch::alarm { 'Delete DynamoDB test alarm':
   ensure               => 'absent',
   region               => 'us-west-2',
   accountId            => '326220766626',
-  alarm_name           => "Critical - High ConsumedWriteCapacity alarm for test",
-  alarm_sns_topic_name => "test-cloudwatch-alarm",
+  alarm_name           => 'High ConsumedWriteCapacity alarm',
+  alarm_sns_topic_name => 'test-cloudwatch-alarm',
 }

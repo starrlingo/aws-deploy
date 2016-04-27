@@ -67,9 +67,10 @@ define aws_deploy::s3::files (
     'absent': {
       # delete file from S3
       exec { "delete ${source}":
-        command => "aws s3 rm ${source} --region ${region} || aws s3 rm ${source} --recursive --region ${region}",
+        command => "aws s3 rm ${source} --region ${region} \
+                    || aws s3 rm ${source} --recursive --region ${region}",
         path    => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-      }      
+      }
     }
     default: {
       fail("${ensure} is not supported on aws_deply::s3::files")

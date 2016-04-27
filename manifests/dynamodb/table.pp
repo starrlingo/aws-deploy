@@ -62,7 +62,7 @@ define aws_deploy::dynamodb::table (
           onlyif  => "/bin/true && ! aws dynamodb describe-table \
                       --table-name ${table_name} --region ${region}"
         }
-      } else {  
+      } else {
         exec { "deploy dynamoDB table ${table_name}":
           command => "aws dynamodb create-table --table-name ${table_name} \
                       --attribute-definitions \

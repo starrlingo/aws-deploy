@@ -10,11 +10,11 @@
 # https://docs.puppetlabs.com/guides/tests_smoke.html
 #
 # sqs creation testing
-$accountId = generate("/bin/sh", "-c", "curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep accountId | grep -o [0-9]* | xargs echo -n")
+$accountId = generate('/bin/sh', '-c', 'curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | grep accountId | grep -o [0-9]* | xargs echo -n')
 
-file { "/tmp/sqs_attrubutes.json":
-  ensure => "file",
-  mode => "0600",
+file { '/tmp/sqs_attrubutes.json':
+  ensure  => 'file',
+  mode    => '0600',
   content => '{ "VisibilityTimeout": "270" }',
 }
 ->
@@ -27,8 +27,8 @@ aws_deploy::sqs::queue { 'create test SQS queue':
 }
 ->
 aws_deploy::sqs::queue { 'delete test SQS queue':
-  ensure                  => 'absent',
-  region                  => 'us-west-2',
-  queue_name              => 'test',
-  accountId               => $accountId,
+  ensure     => 'absent',
+  region     => 'us-west-2',
+  queue_name => 'test',
+  accountId  => $accountId,
 }

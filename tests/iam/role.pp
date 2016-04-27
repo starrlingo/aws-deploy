@@ -10,9 +10,9 @@
 # https://docs.puppetlabs.com/guides/tests_smoke.html
 #
 # role creation testing
-file { "/tmp/iam_assume_test_role_policy.json":
-  ensure => "file",
-  mode => "0600",
+file { '/tmp/iam_assume_test_role_policy.json':
+  ensure  => 'file',
+  mode    => '0600',
   content => '{
     "Version": "2012-10-17",
     "Statement": [
@@ -27,9 +27,9 @@ file { "/tmp/iam_assume_test_role_policy.json":
   }',
 }
 ->
-file { "/tmp/iam_test_role_policy.json":
-  ensure => "file",
-  mode => "0600",
+file { '/tmp/iam_test_role_policy.json':
+  ensure  => 'file',
+  mode    => '0600',
   content => '{
     "Version": "2012-10-17",
     "Statement": [
