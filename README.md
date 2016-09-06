@@ -203,4 +203,4 @@ Only IAM roles, Lambda, Cloudwatch alarm, SQS, S3 resources are supported now.
 
 ## Development
 
-Fork this module from git repo (https://github.com/sp52005/aws-deploy).
+Fork this module from git repo (https://github.com/starrlingo/aws-deploy).
