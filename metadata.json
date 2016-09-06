@@ -4,9 +4,9 @@
   "author": "jason.x.lin",
   "summary": "Manage & Deploy AWS services",
   "license": "MIT",
-  "source": "git://github.com/sp52005/aws-deploy.git",
-  "project_page": "https://github.com/sp52005/aws-deploy",
-  "issues_url": "https://github.com/sp52005/aws-deploy/issues",
+  "source": "git://github.com/starrlingo/aws-deploy.git",
+  "project_page": "https://github.com/starrlingo/aws-deploy",
+  "issues_url": "https://github.com/starrlingo/aws-deploy/issues",
   "dependencies": [
   ],
   "operatingsystem_support": [
